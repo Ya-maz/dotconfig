@@ -1,0 +1,14 @@
+[env]
+TERM = "xterm-256color"
+
+[window]
+padding.x = 2
+padding.y = 2
+
+decorations = "none"
+opacity = 0.92
+blur = true
+
+[font]
+normal.family = "HackNerdFont"
+size = 14.0
