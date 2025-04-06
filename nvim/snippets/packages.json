@@ -1,0 +1,26 @@
+{
+    "name": "example-snippets",
+    "contributes": {
+        "snippets": [
+            {
+                "language": [
+                    "all"
+                ],
+                "path": "./snippets/all.json"
+            },
+            {
+                "language": [
+                    "typescript",
+                    "javascript"
+                ],
+                "path": "./snippets/typescript-snippets.json"
+            },
+            {
+                "language": [
+                    "lua"
+                ],
+                "path": "./snippets/lua.json"
+            }
+        ]
+    }
+}

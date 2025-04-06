@@ -32,3 +32,8 @@ vim.opt.colorcolumn = "80"
 
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+
+-- включить проверку орфографии
+-- vim.opt.spell = true
+-- vim.opt.spelllang = "en"
+

@@ -1,0 +1,28 @@
+{
+    "typescriptReactArrowFunctionComponent": {
+        "prefix": "cccraf",
+        "body": [
+            "import React from 'react'",
+            "",
+            "import styles from './${1:${TM_FILENAME_BASE}}.scss';",
+            "",
+            "interface IProps {",
+            "}",
+            "",
+            "const ${1:${TM_FILENAME_BASE}}: React.FC<IProps> = (props) => {",
+            "  return (",
+            "    <div>${1:first}</div>",
+            "  )",
+            "}"
+        ],
+        "description": "Creates a React Arrow Function Component with ES7 module system and TypeScript interface"
+    },
+    "consoleLog": {
+        "prefix": "ccclg",
+        "body": [
+            "// eslint-disable-next-line no-console",
+            "console.log('%chint', 'background-color: green', ${1:first});"
+        ],
+        "description": "Displays a message in the console"
+    }
+}

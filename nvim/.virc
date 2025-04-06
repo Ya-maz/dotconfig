@@ -1,0 +1,48 @@
+" "****************************************************************************
+" General
+"******************************************************************************
+
+" Setting line numbers
+set number
+set relativenumber
+
+" Setting tab and indentation
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+
+" Enabling smart indentation
+set smartindent
+
+" Disabling line wrap
+set nowrap
+
+" Disabling swapfile and backup
+set noswapfile
+set nobackup
+set undodir=~/.vim/undodir
+set undofile
+
+" Search settings
+set hlsearch
+set incsearch
+
+" Enable true color support
+set termguicolors
+
+" Scrolling and sign column settings
+set scrolloff=8
+set signcolumn=yes
+set isfname+=@-@
+
+" Faster update time
+set updatetime=50
+
+" Highlight column at 80 characters
+set colorcolumn=80
+
+" Split settings
+set splitright
+set splitbelow
+

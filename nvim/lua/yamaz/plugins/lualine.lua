@@ -67,13 +67,13 @@ return {
                         -- path = 0, -- 0 = just filename, 1 = relative path, 2 = absolute path
                     },
                 },
-                lualine_c = {
-                    {
-                        'datetime',
-                        -- options: default, us, uk, iso, or your own format string ("%H:%M", etc..)
-                        style = 'default'
-                    }
-                },
+                -- lualine_c = {
+                --     {
+                --         'datetime',
+                --         -- options: default, us, uk, iso, or your own format string ("%H:%M", etc..)
+                --         style = 'default'
+                --     }
+                -- },
                 lualine_x = {
                     {
                         lazy_status.updates,

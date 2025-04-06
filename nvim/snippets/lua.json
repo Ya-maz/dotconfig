@@ -1,0 +1,12 @@
+{
+    "Print to console": {
+        "prefix": "pr",
+        "body": "print('$1')",
+        "description": "Print to Lua console"
+    },
+    "Print Hello": {
+        "prefix": "hello",
+        "body": "print('Hello, $1!')",
+        "description": "Greeting print"
+    }
+}

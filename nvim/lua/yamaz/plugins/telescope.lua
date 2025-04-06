@@ -34,6 +34,11 @@ return {
         telescope.load_extension("fzf")
         telescope.load_extension("live_grep_args")
 
+        local edit_config_options = {
+            cwd = vim.fn.stdpath('config'),
+            results_title = 'config'
+        }
+
         -- set keymaps
         local keymap = vim.keymap -- for conciseness
 
@@ -43,6 +48,9 @@ return {
         keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
         keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "Find buffere", noremap = true })
         keymap.set("n", "<C-p>", "<cmd>Telescope git_files<cr>", { desc = "Fuzzy find git files" })
-        keymap.set("n", "<leader>fs", require("telescope").extensions.live_grep_args.live_grep_args, { noremap = true })
+        keymap.set("n", "<leader>fs", telescope.extensions.live_grep_args.live_grep_args, { noremap = true })
+        keymap.set("n", "<leader>en", function()
+            require('telescope.builtin').find_files(edit_config_options)
+        end, { desc = "Fuzzy find [K]onfig files" })
     end,
 }
