@@ -10,7 +10,7 @@ return {
             require("tokyonight").setup({
                 -- style = "moon" })
                 -- style = "night" })
-                -- style = "day" })
+                -- style = "day",
                 style = "storm",
                 on_colors = function(colors)
                     colors.fg_gutter = fg_gutter

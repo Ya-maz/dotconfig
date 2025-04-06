@@ -1,6 +1,9 @@
 local keymap = vim.keymap
 
 vim.g.mapleader = " "
+
+-- neorg leader
+vim.g.maplocalleader = ","
 -- vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
 keymap.set("v", "J", ":m '>+2<CR>gv=gv")
 keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -15,11 +18,11 @@ keymap.set("n", "<C-a>", "gg<S-v>G")
 keymap.set("n", "ss", ":split<Return><C-w>w")
 keymap.set("n", "sv", ":vsplit<Return><C-w>w")
 
---Move window
-keymap.set("n", "sh", "<C-w>h")
-keymap.set("n", "sk", "<C-w>k")
-keymap.set("n", "sj", "<C-w>j")
-keymap.set("n", "sl", "<C-w>l")
+-- --Move window
+-- keymap.set("n", "sh", "<C-w>h")
+-- keymap.set("n", "sk", "<C-w>k")
+-- keymap.set("n", "sj", "<C-w>j")
+-- keymap.set("n", "sl", "<C-w>l")
 
 --Resize window
 keymap.set("n", "<C-M-h>", "<C-w><")
@@ -56,8 +59,10 @@ keymap.set("n", "<C-h>", "<cmd>bprevious<CR>")
 -- keymap.set("n", "<C-l>", ":bnext<Return><C-w>w")
 -- keymap.set("n", "<C-h>", ":bprev<Return><C-w>w")
 keymap.set("n", "<C-q>", ":bdelete<Return><C-w>w")
--- keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
--- keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
+-- quicklist navigation
+keymap.set("n", "<C-j>", "<cmd>cnext<CR>zz")
+keymap.set("n", "<C-k>", "<cmd>cprev<CR>zz")
+
 keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 keymap.set("n", "<leader>b", ":ls<cr>:b<space>")
@@ -99,3 +104,32 @@ keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" })     
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" })                 --  go to previous tab
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
 keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" })                     -- open new tab
+
+-- terminal term
+local job_id = 0
+keymap.set('t', '<leader>q', "<C-\\><C-n>", { silent = true }) -- exit from termial mode
+keymap.set("n", "<leader>st", function()
+    vim.cmd.vnew()
+    vim.cmd.term()
+    vim.cmd.wincmd("J")
+
+    job_id = vim.bo.channel
+end)
+
+keymap.set("n", "<leader>test", function()
+    -- any other command 
+    -- ls
+    -- echo "hello world"
+   vim.fn.chansend(job_id, { "npm run test \r\n" })
+end)
+-- setting for current job project 
+keymap.set("n", "<leader>style", function()
+    -- any other command 
+    -- ls
+    -- echo "hello world"
+   vim.fn.chansend(job_id, { "npx stylelint src/apps/**/**.scss --fix \r\n" })
+end)
+
+-- Маппинги для терминала открывает файл под курсором
+vim.keymap.set("n", "<C-LeftMouse>", [[<C-\><C-n>:lua require("yamaz.core.utils").open_file_under_cursor()<CR>]], { noremap = true })
+vim.keymap.set("n", "<leader>o", [[<C-\><C-n>:lua require("yamaz.core.utils").open_file_under_cursor()<CR>]], { noremap = true })

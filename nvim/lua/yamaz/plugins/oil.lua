@@ -16,7 +16,7 @@ return {
             columns = {
                 "icon",
                 -- "permissions",
-                -- "size",
+                "size",
                 -- "mtime",
             },
             -- Buffer-local options to use for oil buffers
@@ -85,9 +85,35 @@ return {
                 ["g\\"] = "actions.toggle_trash",
                 ["yp"] = {
                     desc = "Copy filepath to system clipboard",
-                    callback = function ()
+                    callback = function()
                         require('oil.actions').copy_entry_path.callback()
                         vim.fn.setreg("+", vim.fn.getreg(vim.v.register))
+                    end,
+                },
+                ["<leader>i"] = {
+                    desc = "show file info",
+                    callback = function()
+                        local oil = require("oil")
+                        local entry = oil.get_cursor_entry()
+                        print("Файл", entry.path)
+                        if not entry then
+                            print("Файл не выбран!")
+                            return
+                        end
+
+                        local cmd = "stat " .. vim.fn.shellescape(entry.path)
+                        if vim.fn.has("mac") == 1 then
+                            cmd = "stat -x " .. vim.fn.shellescape(entry.path) -- Для macOS
+                        end
+
+                        vim.fn.jobstart(cmd, {
+                            stdout_buffered = true,
+                            on_stdout = function(_, data)
+                                if data and #data > 0 then
+                                    vim.api.nvim_echo({ { table.concat(data, "\n"), "Normal" } }, false, {})
+                                end
+                            end,
+                        })
                     end,
                 },
             },
@@ -95,7 +121,7 @@ return {
             use_default_keymaps = true,
             view_options = {
                 -- Show files and directories that start with "."
-                show_hidden = false,
+                show_hidden = true,
                 -- This function defines what is considered a "hidden" file
                 is_hidden_file = function(name, bufnr)
                     return vim.startswith(name, ".")
@@ -196,7 +222,6 @@ return {
             keymaps_help = {
                 border = "rounded",
             },
-
         })
 
         -- set keymaps
