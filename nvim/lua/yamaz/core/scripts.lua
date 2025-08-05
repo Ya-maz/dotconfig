@@ -30,16 +30,3 @@ vim.api.nvim_create_autocmd('FileType', {
     end
 })
 
--- #4
-vim.api.nvim_create_autocmd("Filetype", {
-    pattern = "norg",
-         callback = function()
-        vim.keymap.set("n", "<localleader>n", function()
-            print("Neorg mapping!")
-        end, { buffer = true, silent = true })
-        -- раскрывет все блоки в заметках Neorg
-         vim.schedule(function()
-            vim.cmd("normal! zR")
-        end)
-    end,
-})

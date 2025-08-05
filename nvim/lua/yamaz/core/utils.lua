@@ -17,7 +17,7 @@ end
 local function apply_snippets(snippets)
     for _, snippet in ipairs(snippets) do
         vim.keymap.set(
-            'i',
+            snippet.mode,
             snippet.key_map,
             snippet.command,
             get_keymap_opts(snippet.desc)

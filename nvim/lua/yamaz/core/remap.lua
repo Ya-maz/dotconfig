@@ -1,10 +1,11 @@
 local keymap = vim.keymap
+local markdown_utils = require('yamaz.core.markdown-utils')
 
 vim.g.mapleader = " "
 
--- neorg leader
-vim.g.maplocalleader = ","
 -- vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
+--
+keymap.set('n', '<leader><CR>', markdown_utils.link, { desc = 'Обработать Markdown-ссылку под курсором' })
 keymap.set("v", "J", ":m '>+2<CR>gv=gv")
 keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
@@ -12,17 +13,21 @@ keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 -- keymap.set("n", "x", "_x")
 
 --Select all
-keymap.set("n", "<C-a>", "gg<S-v>G")
+keymap.set("n", "<leader>sa", "gg<S-v>G")
 
 -- Split window
 keymap.set("n", "ss", ":split<Return><C-w>w")
 keymap.set("n", "sv", ":vsplit<Return><C-w>w")
 
 -- --Move window
--- keymap.set("n", "sh", "<C-w>h")
--- keymap.set("n", "sk", "<C-w>k")
--- keymap.set("n", "sj", "<C-w>j")
--- keymap.set("n", "sl", "<C-w>l")
+-- keymap.set("n", "rh", "<C-w>h")
+-- keymap.set("n", "rk", "<C-w>k")
+-- keymap.set("n", "rj", "<C-w>j")
+-- keymap.set("n", "rl", "<C-w>l")
+keymap.set("n", "fwh", "<C-w>h")
+keymap.set("n", "fwj", "<C-w>j")
+keymap.set("n", "fwk", "<C-w>k")
+keymap.set("n", "fwl", "<C-w>l")
 
 --Resize window
 keymap.set("n", "<C-M-h>", "<C-w><")
@@ -49,22 +54,24 @@ keymap.set("n", "<leader>Y", [["+Y]])
 keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
 -- This is going to get me cancelled
-keymap.set("i", "<C-c>", "<Esc>")
+-- keymap.set("i", "<C-c>", "<Esc>")
 
-keymap.set("n", "Q", "<nop>")
-keymap.set("n", "<leader>f", vim.lsp.buf.format)
--- navigate buffer
-keymap.set("n", "<C-l>", "<cmd>bnext<CR>")
-keymap.set("n", "<C-h>", "<cmd>bprevious<CR>")
--- keymap.set("n", "<C-l>", ":bnext<Return><C-w>w")
--- keymap.set("n", "<C-h>", ":bprev<Return><C-w>w")
+-- keymap.set("n", "Q", "<nop>")
+
 keymap.set("n", "<C-q>", ":bdelete<Return><C-w>w")
 -- quicklist navigation
-keymap.set("n", "<C-j>", "<cmd>cnext<CR>zz")
-keymap.set("n", "<C-k>", "<cmd>cprev<CR>zz")
+keymap.set("n", "<C-n>", "<cmd>cnext<CR>zz")
+keymap.set("n", "<C-m>", "<cmd>cprev<CR>zz")
 
-keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
-keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
+-- change buffer(now change from telescope)
+-- keymap.set("n", "<C-l>", "<cmd>bnext<CR>")
+-- keymap.set("n", "<C-h>", "<cmd>bprevious<CR>")
+-- keymap.set("n", "<C-l>", ":bnext<Return><C-w>w")
+-- keymap.set("n", "<C-h>", ":bprev<Return><C-w>w")
+
+-- quicklist navigation(old)
+-- keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
+-- keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 keymap.set("n", "<leader>b", ":ls<cr>:b<space>")
 
 keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])

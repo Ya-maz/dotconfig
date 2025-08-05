@@ -95,6 +95,12 @@ return {
 			on_attach = on_attach,
 		})
 
+		-- configure json server
+		lspconfig["gopls"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
+
 		-- configure lua server (with special settings)
 		lspconfig["lua_ls"].setup({
 			capabilities = capabilities,

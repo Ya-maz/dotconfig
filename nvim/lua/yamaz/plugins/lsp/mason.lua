@@ -30,7 +30,8 @@ return {
 				"ts_ls",
 				"html",
 				"cssls",
-				"lua_ls"
+				"lua_ls",
+                "gopls"
 			},
 			-- auto-install configured servers (with lspconfig)
 			automatic_installation = true, -- not the same as ensure_installed
