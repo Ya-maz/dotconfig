@@ -1,0 +1,14 @@
+Example
+
+копия того, что должно лежать по пути 
+~/.local/share/applications/power-menu.desktop
+
+[Desktop Entry]
+Name=Power Menu
+Comment=Выключение, перезагрузка, сон
+Exec=/home/almaz/.config/sway/power_menu.sh
+Icon=system-shutdown
+Terminal=false
+Type=Application
+Categories=Utility;
+
