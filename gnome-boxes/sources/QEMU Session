@@ -5,10 +5,10 @@ uri=qemu+unix:///session
 save-on-quit=true
 
 [display 0fa824a3-2c2a-46cf-8877-2ecfd5120e74]
-last-seen-name=boxes-unknown-2
+last-seen-name=windows 7
 uuid=0fa824a3-2c2a-46cf-8877-2ecfd5120e74
 acceleration-3d=false
 run-in-bg=false
-access-last-time=1755883077965415
-access-ntimes=1
-access-total-time=1261
+access-last-time=1757081466627006
+access-ntimes=12
+access-total-time=71943

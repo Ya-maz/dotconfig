@@ -10,4 +10,7 @@
 !/nvim/**
 !/alacritty/**
 !/tmux/**
+!/vifm/**
+!/cmus/**
+!/keyboards/**
 
