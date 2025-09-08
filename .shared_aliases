@@ -1,0 +1,57 @@
+# Neovim
+# закомментирую ниже строки, которая запускает старую версию neovim version
+# 0.9.5
+# alias n='nvim'
+# alias nn='nvim --cmd "let g:weak_mode = 1"'
+# alias nnn='nvim -u NONE'
+
+alias n='~/local/nvim/bin/nvim'
+alias nn='~/local/nvim/bin/nvim --cmd "let g:weak_mode = 1"'
+alias nnn='~/local/nvim/bin/nvim -u NONE'
+
+# Vim
+alias v='vi'
+
+# Tmux
+alias tn='tmux new -s'
+
+# Ripgrep aliases
+alias rgl='rg -l'
+
+# Git aliases
+alias gs='git status --short'
+alias ga='git add'
+alias gb='git branch'
+alias gc='git checkout'
+alias gme='git merge'
+alias gpl='git pull'
+alias gps='git push'
+alias gplo='git pull origin $(git branch --show-current)'
+alias gpso='git push origin $(git branch --show-current)'
+alias gpsov='git push --no-verify origin $(git branch --show-current)'
+alias gpsof='git push --force origin $(git branch --show-current)'
+alias gpsofv='git push --force --no-verify origin $(git branch --show-current)'
+alias gpsovf=gpsofv
+alias gcp='git cherry-pick'
+alias gl='git log'
+alias glp='git log -p'
+glf() {
+    git log --all --grep="$*"
+}
+alias gln='git log --name-only'
+alias gcv='git commit -v'
+alias gcm='git commit -m'
+alias gca='git commit --amend'
+alias gd='git diff'
+alias gms='BRANCH=$(git branch --show-current); git checkout staging; git merge $BRANCH; git push origin staging; git checkout $BRANCH'
+alias gda='git diff --color --name-only --diff-filter=A'
+alias gdm='git diff --color --name-only --diff-filter=M'
+alias gdd='git diff --color --name-only --diff-filter=D'
+
+#TODO
+alias td="cat $NOTES_DIR/TODO.md"
+alias tde="(cd $NOTES_DIR && vim TODO.md && git add TODO.md && git commit -m 'update TODO')"
+
+#NOTES
+alias nt="(cd $NOTES_DIR && vim tmp.md)"
+alias nu="(cd $NOTES_DIR && git add . && git commit -m 'update notes')"

@@ -13,4 +13,7 @@
 !/vifm/**
 !/cmus/**
 !/keyboards/**
+!/.bashrc
+!/.shared_aliases
+!/tmux_intech.sh
 
