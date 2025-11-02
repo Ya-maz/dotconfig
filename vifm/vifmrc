@@ -12,8 +12,8 @@
 " Command used to edit files in various contexts.  The default is vim.
 " If you would like to use another vi clone such as Elvis or Vile
 " you will need to change this setting.
-if executable('vim')
-    set vicmd=vim
+if executable('vi')
+    set vicmd=vi
 elseif executable('nvim')
     set vicmd=nvim
 elseif executable('elvis')
@@ -270,6 +270,8 @@ filextype {.blend}
         \ {Open in Blender}
         \ blender %c,
 filextype {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
+        \ {View with xdg-open}
+        \ xdg-open %f,
         \ {View in sxiv}
         \ sxiv %f,
         \ {View in gpicview}

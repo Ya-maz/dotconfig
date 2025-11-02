@@ -1,5 +1,8 @@
 *
 !/**/
+vifm/vifminfo.json
+gnome-boxes/sources/**
+
 
 # Список разрешённых папок
 !/sway/**
@@ -8,10 +11,11 @@
 !/mc/**
 !/gnome-boxes/**
 !/nvim/**
+!/nvim-v10/**
 !/alacritty/**
 !/tmux/**
 !/vifm/**
-!/cmus/**
+# !/cmus/**
 !/keyboards/**
 !/.bashrc
 !/.shared_aliases
