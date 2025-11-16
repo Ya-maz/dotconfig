@@ -16,3 +16,30 @@ require("yamaz.lazy")
 -- use font
 -- Hack Nerd Font
 -- https://www.nerdfonts.com/font-downloads
+--
+local info = debug.getinfo(1, "S")
+local config_file = info.source:sub(2)  -- убираем '@'
+
+
+
+-- Динамическая версия Neovim
+local v = vim.version()
+local version_str = string.format("%d.%d.%d", v.major, v.minor, v.patch)
+
+-- Если нужно, можно и в :messages
+print(string.format("[NVIM-CONFIG]: %s", config_file))
+print(string.format("[NVIM-VERSION]: %s", version_str))
+
+-- clipboard становится общим для winddows и wsl linux
+vim.g.clipboard = {
+	name = 'win32yank',
+	copy = {
+		['+'] = 'win32yank.exe -i --crlf',
+		['*'] = 'win32yank.exe -i --crlf',
+	},
+	paste = {
+		['+'] = 'win32yank.exe -o --lf',
+		['*'] = 'win32yank.exe -o --lf',
+	},
+	cache_enabled = 0,
+}

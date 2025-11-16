@@ -12,3 +12,8 @@ blur = true
 [font]
 normal.family = "HackNerdFont"
 size = 14.0
+
+# на wsl2deb cтоит такой шрифт
+# almaz@DESKTOP-DP6J8QJ: fc-match
+# DejaVuSans.ttf: "DejaVu Sans" "Book"
+# и будто бы норм

@@ -19,5 +19,6 @@ gnome-boxes/sources/**
 !/keyboards/**
 !/.bashrc
 !/.shared_aliases
+!/.shared_aliases_wsl2deb
 !/tmux_intech.sh
 
