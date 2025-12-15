@@ -1,19 +1,33 @@
+[font]
+normal = { family = "Hack Nerd Font", style = "Regular" }
+bold   = { family = "Hack Nerd Font", style = "Bold" }
+italic = { family = "Hack Nerd Font", style = "Italic" }
+size = 12
+
 [env]
 TERM = "xterm-256color"
 
 [window]
 padding.x = 2
 padding.y = 2
-
 decorations = "none"
 opacity = 0.92
 blur = true
+startup_mode = "Fullscreen"
 
-[font]
-normal.family = "HackNerdFont"
-size = 14.0
+[colors.primary]
+background = "#1e1e1e"
+foreground = "#c5c8c6"
+
+[[keyboard.bindings]]
+key = "F11"
+action = "ToggleFullscreen"
+
+[terminal]
+osc52 = "CopyPaste"
 
 # на wsl2deb cтоит такой шрифт
 # almaz@DESKTOP-DP6J8QJ: fc-match
 # DejaVuSans.ttf: "DejaVu Sans" "Book"
 # и будто бы норм
+

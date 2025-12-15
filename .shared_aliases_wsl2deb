@@ -1,16 +1,15 @@
+# Открытие проводника на винде
+alias open='explorer.exe'
+
 # Neovim
 # закомментирую ниже строки, которая запускает старую версию neovim version
 # 0.9.5
 # alias n='nvim'
 # alias nn='nvim --cmd "let g:weak_mode = 1"'
 # alias nnn='nvim -u NONE'
-
-
-
-
 alias n='~/.local/nvim-0.10/bin/nvim'
 alias nn='~/.local/nvim-0.10/bin/nvim --cmd "let g:weak_mode = 1"'
-alias nnn='~/.local/nvim-0.10/bin/nvim -u NONE'
+alias nnn='~/.local/nvim-0.10/bin/nvim --clean'
 # Vim
 alias v='vi'
 

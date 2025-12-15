@@ -34,3 +34,5 @@ source /home/almaz/local/forks/alacritty/extra/completions/alacritty.bash
 # @export PATH=$PATH:~/.spoofdpi/bin
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/go/bin # для утилиты scc
+bind 'set enable-bracketed-paste on'
+

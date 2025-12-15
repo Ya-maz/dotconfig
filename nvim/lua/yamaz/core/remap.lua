@@ -30,10 +30,10 @@ keymap.set("n", "fwk", "<C-w>k")
 keymap.set("n", "fwl", "<C-w>l")
 
 --Resize window
-keymap.set("n", "<C-M-h>", "<C-w><")
-keymap.set("n", "<C-M-l>", "<C-w>>")
-keymap.set("n", "<C-M-k>", "<C-w>+")
-keymap.set("n", "<C-M-j>", "<C-w>-")
+keymap.set("n", "<M-n>", "<C-w><")
+keymap.set("n", "<M-.>", "<C-w>>")
+keymap.set("n", "<M-,>", "<C-w>+")
+keymap.set("n", "<M-m>", "<C-w>-")
 
 -- Split line under cursor and second line
 keymap.set("n", "J", "mzJ`z")
