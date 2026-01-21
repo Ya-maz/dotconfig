@@ -1,10 +1,11 @@
 local keymap = vim.keymap
 local markdown_utils = require('yamaz.core.markdown-utils')
+local ai_utils = require('yamaz.core.ai-edit')
 
 vim.g.mapleader = " "
 
 -- vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
---
+keymap.set("v", "<leader>ai", ai_utils.ai_edit, { desc = "AI edit selected code" })
 keymap.set('n', '<leader><CR>', markdown_utils.link, { desc = 'Обработать Markdown-ссылку под курсором' })
 keymap.set("v", "J", ":m '>+2<CR>gv=gv")
 keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -124,19 +125,15 @@ keymap.set("n", "<leader>st", function()
 end)
 
 keymap.set("n", "<leader>test", function()
-    -- any other command 
+    -- any other command
     -- ls
     -- echo "hello world"
-   vim.fn.chansend(job_id, { "npm run test \r\n" })
+    vim.fn.chansend(job_id, { "npm run test \r\n" })
 end)
--- setting for current job project 
+-- setting for current job project
 keymap.set("n", "<leader>style", function()
-    -- any other command 
+    -- any other command
     -- ls
     -- echo "hello world"
-   vim.fn.chansend(job_id, { "npx stylelint src/apps/**/**.scss --fix \r\n" })
+    vim.fn.chansend(job_id, { "npx stylelint src/apps/**/**.scss --fix \r\n" })
 end)
-
--- Маппинги для терминала открывает файл под курсором
-vim.keymap.set("n", "<C-LeftMouse>", [[<C-\><C-n>:lua require("yamaz.core.utils").open_file_under_cursor()<CR>]], { noremap = true })
-vim.keymap.set("n", "<leader>o", [[<C-\><C-n>:lua require("yamaz.core.utils").open_file_under_cursor()<CR>]], { noremap = true })

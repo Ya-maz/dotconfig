@@ -1,6 +1,35 @@
 # Открытие проводника на винде
 alias open='explorer.exe'
 
+# Открытие проводника на винде
+alias we='curl -s curl -s wttr.in/Kazan'
+
+# AIChat
+alias ai='aichat'
+alias airu='aichat -r %translate-2-ru%'
+
+alias aisumcode='git show | aichat -r %code-reviewer%'
+# уже не нужно, оставляю для примера
+# alias aicheckstyle='git show | aichat --role %code-reviewer-with-rag% --rag styleguide'
+# alias aireview='git show | aichat --role %code-reviewer-new%'
+alias aireview='time ( \
+    echo "=== AI Code Review ===" && \
+    echo "Branch: $(git branch --show-current)" && \
+    echo "Commit message: $(git log -1 --pretty=format:%s)" && \
+    echo "Commit: $(git rev-parse --short HEAD)" && \
+    echo "Author: $(git log -1 --pretty=format:%an)" && \
+    echo "Date: $(date)" && \
+    echo && \
+    echo "aichat --role %code-reviewer-new%" && \
+    echo "AI review processing..." && \
+    git show | aichat --role %code-reviewer-new% > ~/jobs/intech/codebase/temp/temp-ai-checkcode.md &&\
+    echo -e "\n✓ Review completed. Results saved to: ~/jobs/intech/codebase/temp/temp-ai-checkcode.md")'
+
+# Ollama
+alias checkOllama='curl http://$(ip route | awk "/default/ {print \$3}"):11434'
+alias routeOllama='ip route | awk "/default/ {print \$3}"'
+
+
 # Neovim
 # закомментирую ниже строки, которая запускает старую версию neovim version
 # 0.9.5
@@ -9,12 +38,13 @@ alias open='explorer.exe'
 # alias nnn='nvim -u NONE'
 alias n='~/.local/nvim-0.10/bin/nvim'
 alias nn='~/.local/nvim-0.10/bin/nvim --cmd "let g:weak_mode = 1"'
-alias nnn='~/.local/nvim-0.10/bin/nvim --clean'
+alias nnn='~/.local/nvim-0.10/bin/nvim --cmd "let g:ultra_weak_mode = 1"'
 # Vim
 alias v='vi'
 
 # Tmux
 alias tn='tmux new -s'
+alias tr='tmux rename-window'
 
 # Ripgrep aliases
 alias rgl='rg -l'

@@ -1,6 +1,7 @@
 -- code
 require("yamaz.core")
 require("yamaz.lazy")
+
 -- langmapper break next keymap:
 -- ["<C-k>"] = cmp.mapping.select_prev_item(), -- previous suggestion
 -- ["<C-j>"] = cmp.mapping.select_next_item(), -- next suggestion
@@ -29,8 +30,7 @@ local version_str = string.format("%d.%d.%d", v.major, v.minor, v.patch)
 -- Если нужно, можно и в :messages
 print(string.format("[NVIM-CONFIG]: %s", config_file))
 print(string.format("[NVIM-VERSION]: %s", version_str))
-
--- clipboard становится общим для winddows и wsl linux
+    -- clipboard становится общим для winddows и wsl linux
 vim.g.clipboard = {
 	name = 'win32yank',
 	copy = {
