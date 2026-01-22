@@ -1,60 +1,73 @@
 return {
-  {
-    "nvim-treesitter/nvim-treesitter",
-    event = { "BufReadPre", "BufNewFile" },
-    build = ":TSUpdate",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter-textobjects",
-      "windwp/nvim-ts-autotag",
-    },
-    config = function()
-      -- import nvim-treesitter plugin
-      local treesitter = require("nvim-treesitter.configs")
+	{
+		"nvim-treesitter/nvim-treesitter",
+		version = "v0.9.3", -- 🔒 стабильная версия
+		build = ":TSUpdate",
 
-      -- configure treesitter
-      treesitter.setup({ -- enable syntax highlighting
-        highlight = {
-          enable = true,
-        },
-        -- enable indentation
-        indent = { enable = true },
-        -- enable autotagging (w/ nvim-ts-autotag plugin)
-        autotag = {
-          enable = true,
-        },
-        -- ensure these language parsers are installed
-        ensure_installed = {
-          "json",
-          "javascript",
-          "typescript",
-          "tsx",
-          "yaml",
-          "html",
-          "css",
-          "markdown",
-          "markdown_inline",
-          "bash",
-          "lua",
-          "vim",
-          "dockerfile",
-          "gitignore",
-          "query",
-          "go",
-          "gomod"
-        },
-        incremental_selection = {
-          enable = true,
-          keymaps = {
-            init_selection = "<C-space>",
-            node_incremental = "<C-space>",
-            scope_incremental = false,
-            node_decremental = "<bs>",
-          },
-        },
-      })
+		dependencies = {
+			{
+				"nvim-treesitter/nvim-treesitter-textobjects",
+				lazy = false,
+			},
+			{
+				"windwp/nvim-ts-autotag",
+				lazy = false,
+			},
+			{
+				"JoosepAlviste/nvim-ts-context-commentstring",
+				lazy = false,
+			},
+		},
 
-      -- enable nvim-ts-context-commentstring plugin for commenting tsx and jsx
-      require('ts_context_commentstring').setup {}
-    end,
-  },
+		config = function()
+            vim.g.skip_ts_context_commentstring_module = true
+			require("nvim-treesitter.configs").setup({
+				ensure_installed = {
+					"json",
+					"javascript",
+					"typescript",
+					"tsx",
+					"yaml",
+					"html",
+					"css",
+					"markdown",
+					"markdown_inline",
+					"bash",
+					"lua",
+					"vim",
+					"dockerfile",
+					"gitignore",
+					"query",
+					"go",
+					"gomod",
+				},
+
+				highlight = { enable = true },
+				indent = { enable = true },
+
+				incremental_selection = {
+					enable = true,
+					keymaps = {
+						init_selection = "<C-space>",
+						node_incremental = "<C-space>",
+						node_decremental = "<bs>",
+					},
+				},
+
+				autotag = { enable = true },
+
+				-- context_commentstring = {
+				-- 	enable = true,
+				-- 	enable_autocmd = false,
+				-- },
+
+				textobjects = {
+					select = {
+						enable = true,
+						lookahead = true,
+					},
+				},
+			})
+		end,
+	},
 }

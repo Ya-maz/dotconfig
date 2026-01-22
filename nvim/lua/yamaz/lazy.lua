@@ -19,6 +19,9 @@ vim.opt.rtp:prepend(lazypath)
 --
 if utils.is_ultra_weak_mode() then
     print("Ultra weak mode enabled! (core only)")
+    require("lazy").setup({
+        { import = "yamaz.plugins.oil" },
+    })
     return
 end
 

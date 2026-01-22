@@ -31,14 +31,15 @@ alias routeOllama='ip route | awk "/default/ {print \$3}"'
 
 
 # Neovim
+# 0.10....
 # закомментирую ниже строки, которая запускает старую версию neovim version
-# 0.9.5
-# alias n='nvim'
-# alias nn='nvim --cmd "let g:weak_mode = 1"'
-# alias nnn='nvim -u NONE'
-alias n='~/.local/nvim-0.10/bin/nvim'
-alias nn='~/.local/nvim-0.10/bin/nvim --cmd "let g:weak_mode = 1"'
-alias nnn='~/.local/nvim-0.10/bin/nvim --cmd "let g:ultra_weak_mode = 1"'
+# alias n='~/.local/nvim-0.10/bin/nvim'
+# alias nn='~/.local/nvim-0.10/bin/nvim --cmd "let g:weak_mode = 1"'
+# alias nnn='~/.local/nvim-0.10/bin/nvim --cmd "let g:ultra_weak_mode = 1"'
+# v0.11.5
+alias n='nvim'
+alias nn='nvim --cmd "let g:weak_mode = 1"'
+alias nnn='nvim --cmd "let g:ultra_weak_mode = 1"'
 # Vim
 alias v='vi'
 
