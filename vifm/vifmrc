@@ -13,7 +13,7 @@
 " If you would like to use another vi clone such as Elvis or Vile
 " you will need to change this setting.
 if executable('vi')
-    set vicmd=vi
+    set vicmd=nvim_ultra_weak
 elseif executable('nvim')
     set vicmd=nvim
 elseif executable('elvis')

@@ -5,9 +5,9 @@
 # alias nn='nvim --cmd "let g:weak_mode = 1"'
 # alias nnn='nvim -u NONE'
 
-alias n='~/local/nvim10/bin/nvim -u ~/.config/nvim-v10/init.lua'
-alias nn='~/local/nvim10/bin/nvim --cmd "let g:weak_mode = 1" -u ~/.config/nvim-v10/init.lua'
-alias nnn='~/local/nvim10/bin/nvim --clean'
+alias n='nvim'
+alias nn='nvim --cmd "let g:weak_mode = 1"'
+alias nnn='nvim --cmd "let g:ultra_weak_mode = 1"'
 
 # Vim
 alias v='vi'

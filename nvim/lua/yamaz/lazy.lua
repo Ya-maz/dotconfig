@@ -16,6 +16,14 @@ vim.opt.rtp:prepend(lazypath)
 -- require('lazy').setup({
 -- {'nvim-telescope/telescope.nvim', dependencies = {'nvim-lua/plenary.nvim'}}
 -- })
+--
+if utils.is_ultra_weak_mode() then
+    print("Ultra weak mode enabled! (core only and oil plugin)")
+    require("lazy").setup({
+        { import = "yamaz.plugins.oil" },
+    })
+    return
+end
 
 if utils.is_weak_mode() then
     -- Легкая конфигурация
@@ -27,13 +35,14 @@ if utils.is_weak_mode() then
     require("lazy").setup({
         { import = "yamaz.plugins" },
     })
-else
-    -- Обычная конфигурация
-    -- Добавлен alias
-    -- alias n='nvim'
-    print("Normal mode enabled!")
-    require("lazy").setup({
-        { import = "yamaz.plugins" },
-        { import = "yamaz.plugins.lsp" }
-    })
+    return
 end
+
+-- Обычная конфигурация
+-- Добавлен alias
+-- alias n='nvim'
+print("Normal mode enabled!")
+require("lazy").setup({
+    { import = "yamaz.plugins" },
+    { import = "yamaz.plugins.lsp" }
+})
