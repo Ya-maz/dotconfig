@@ -26,7 +26,7 @@ return {
                 },
                 preview_title = "_",
                 path_display = { "truncate " },
-                file_ignore_patterns = { "node_modules" },
+                file_ignore_patterns = { "node_modules", "dist" },
                 mappings = {
                     i = {
                         ["<C-k>"] = actions.move_selection_previous, -- move to prev result

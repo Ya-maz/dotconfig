@@ -23,7 +23,7 @@ alias aireview='time ( \
     echo "aichat --role %code-reviewer-new%" && \
     echo "AI review processing..." && \
     git show | aichat --role %code-reviewer-new% > ~/jobs/intech/codebase/temp/temp-ai-checkcode.md &&\
-    echo -e "\n✓ Review completed. Results saved to: ~/jobs/intech/codebase/temp/temp-ai-checkcode.md")'
+    echo -e "\u001b[1;32m✓\u001b[0m Review completed. Results saved to: ~/jobs/intech/codebase/temp/temp-ai-checkcode.md")'
 
 # Ollama
 alias checkOllama='curl http://$(ip route | awk "/default/ {print \$3}"):11434'
