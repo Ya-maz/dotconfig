@@ -17,6 +17,7 @@ return {
         markdown = { "prettier" },
         graphql = { "prettier" },
         lua = { "stylua" },
+        go = { "goimports", "gofumpt" },
       },
       formatters = {
         eslint_d = {

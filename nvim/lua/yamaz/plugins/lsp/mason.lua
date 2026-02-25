@@ -31,6 +31,7 @@ return {
 				"html",
 				"cssls",
 				"lua_ls",
+				"gopls",
 			},
 			-- auto-install configured servers (with lspconfig)
 			automatic_installation = true, -- not the same as ensure_installed
@@ -42,6 +43,9 @@ return {
 				"stylua", -- lua formatter
 				"eslint_d", -- js linter
 				"sonarlint-language-server",
+				"goimports",
+				"gofumpt",
+				"golangci-lint",
 			},
 		})
 	end,
