@@ -45,7 +45,15 @@ return {
         vim.api.nvim_create_user_command('LiveGrepLiteral', function()
             builtin.live_grep({
                 additional_args = function()
-                    return { "-F", "--no-ignore", "--hidden" }
+                    return {
+                        "-F",
+                        "--hidden",
+                        "--glob", "!.git/*",
+                        "--glob", "!node_modules/*",
+                        "--glob", "!dist/*",
+                        "--glob", "!.vscode/*",
+                        "--glob", "!.editorconfig/*",
+                    }
                 end
             })
         end, {})
