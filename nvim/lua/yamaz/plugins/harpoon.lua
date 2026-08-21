@@ -19,20 +19,25 @@ return {
 				harpoon.ui:toggle_quick_menu(harpoon:list())
 			end)
 
-			vim.keymap.set("n", "<M-h>", function()
+			-- <A-S-F1>...<A-S-F5> для выбора файлов harpoon.
+			-- Alt+Shift, чтобы избежать перехвата Alt+F4 (закрывает терминал в Windows).
+			vim.keymap.set("n", "<C-F1>", function()
 				harpoon:list():select(1)
 			end)
-			vim.keymap.set("n", "<M-j>", function()
-                harpoon:list():select(2)
-            end)
-            vim.keymap.set("n", "<M-k>", function()
+			vim.keymap.set("n", "<C-F2>", function()
+				harpoon:list():select(2)
+			end)
+			vim.keymap.set("n", "<C-F3>", function()
 				harpoon:list():select(3)
 			end)
-			vim.keymap.set("n", "<M-l>", function()
+			vim.keymap.set("n", "<C-F4>", function()
 				harpoon:list():select(4)
-            end)
+			end)
+			vim.keymap.set("n", "<C-F5>", function()
+				harpoon:list():select(5)
+			end)
 
-            -- Toggle previous & next buffers stored within Harpoon list
+			-- Toggle previous & next buffers stored within Harpoon list
 			vim.keymap.set("n", "<C-S-P>", function()
 				harpoon:list():prev()
 			end)

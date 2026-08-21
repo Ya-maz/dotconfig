@@ -25,10 +25,16 @@ alias aireview='time ( \
     git show | aichat --role %code-reviewer-new% > ~/jobs/intech/codebase/temp/temp-ai-checkcode.md &&\
     echo -e "\u001b[1;32m✓\u001b[0m Review completed. Results saved to: ~/jobs/intech/codebase/temp/temp-ai-checkcode.md")'
 
+# current frontend project
+alias szs='npm run cli start ftest src'
+alias szc='npm run cli'
+alias szwu='npm run watch update'
+alias szwc='npm run watch configured'
+alias szcl='cat local.config.json'
+
 # Ollama
 alias checkOllama='curl http://$(ip route | awk "/default/ {print \$3}"):11434'
 alias routeOllama='ip route | awk "/default/ {print \$3}"'
-
 
 # Neovim
 # 0.10....

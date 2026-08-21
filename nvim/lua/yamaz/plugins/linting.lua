@@ -10,7 +10,7 @@ return {
 			javascriptreact = { "eslint_d" },
 			typescriptreact = { "eslint_d" },
 			svelte = { "eslint_d" },
-            json = { "jsonlint" },
+            json = { "json_tool" },
             go = { "golangcilint" },
 		}
 

@@ -31,6 +31,13 @@ vim.opt.updatetime = 50
 --
 vim.opt.colorcolumn = "80"
 
+-- Чтобы Esc после insert mode не "съедался" как Meta (Alt+h/j/k/l и т.п.)
+-- если сразу жать навигацию. ttimeoutlen работает только для маппингов
+-- типа <Esc>, timeoutlen — для остальных. Уменьшаем, чтобы быстрый
+-- Esc + буква не превращался в Alt+буква (иначе harpoon кидает в другой буфер).
+vim.opt.ttimeoutlen = 100
+vim.opt.timeoutlen = 500
+
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 

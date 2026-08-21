@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "playwright": {
+      "url": "http://172.22.48.1:3000/mcp"
+        }
+    }
+}

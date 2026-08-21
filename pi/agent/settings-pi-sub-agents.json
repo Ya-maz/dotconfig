@@ -1,0 +1,41 @@
+{
+  "lastChangelogVersion": "0.79.6",
+  "defaultProvider": "ollama",
+  "defaultModel": "lfm2.5:latest",
+  "hideThinkingBlock": false,
+  "packages": [
+    "git:github.com/aliou/pi-guardrails",
+    "npm:pi-mcp-adapter",
+    "npm:pi-vision-tool",
+    "npm:pi-tps-was-taken",
+    "npm:pi-subagents"
+  ],
+  "subagents": {
+    "agentOverrides": {
+      "scout": {
+        "model": "lfm2.5:latest",
+        "defaultContext": "fresh"
+      },
+      "worker": {
+        "model": "gemma4:12b-it-q8_0",
+        "thinking": "high"
+      },
+      "planner": {
+        "disabled": true
+      },
+      "reviewer": {
+        "disabled": true
+      },
+      "oracle": {
+        "disabled": true
+      },
+      "researcher": {
+        "disabled": true
+      },
+      "delegate": {
+        "disabled": true
+      }
+    }
+  },
+  "theme": "dark"
+}

@@ -22,3 +22,23 @@ gnome-boxes/sources/**
 !/.shared_aliases_wsl2deb
 !/tmux_intech.sh
 
+!/pi/**
+
+# pi: runtime-мусор и секреты (не часть слепка конфига)
+pi/agent/auth.json
+pi/agent/bin/**
+pi/agent/sessions/**
+pi/agent/tmp/**
+pi/agent/git/**
+pi/agent/git/.gitignore
+pi/agent/npm/**
+pi/agent/npm/.gitignore
+pi/agent/skills/**
+pi/agent/mcp-oauth/**
+pi/agent/mcp-cache.json
+pi/agent/mcp-onboarding.json
+pi/agent/run-history.jsonl
+# автосгенерированные списки моделей с локальных серверов
+pi/agent/models-llama.json
+pi/agent/models-lmstudio.json
+pi/agent/models-ollama.json

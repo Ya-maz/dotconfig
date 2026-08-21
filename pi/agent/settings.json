@@ -1,0 +1,14 @@
+{
+  "lastChangelogVersion": "0.79.6",
+  "defaultProvider": "ollama",
+  "defaultModel": "glm-5.2:cloud",
+  "hideThinkingBlock": false,
+  "packages": [
+    "git:github.com/aliou/pi-guardrails",
+    "npm:pi-mcp-adapter",
+    "npm:pi-vision-tool",
+    "npm:pi-tps-was-taken",
+    "npm:pi-web-access"
+  ],
+  "theme": "dark"
+}

@@ -1,0 +1,8 @@
+{
+  "provider": "ollama",
+  "model": "minicpm-v4.6:latest",
+  "maxDimension": 1568,
+  "jpegQuality": 85,
+  "defaultReasoningEffort": "off",
+  "enabled": true
+}

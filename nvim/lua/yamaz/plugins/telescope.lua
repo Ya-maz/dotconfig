@@ -36,6 +36,18 @@ return {
                     },
                 },
             },
+            git_commits = {
+                win_config = {
+                    width = 100,
+                    height = 40,
+                },
+                preview_config = {
+                    resolution = "very_low",
+                    timeout = 5,
+                },
+                follow = true,
+                refspec = "HEAD",
+            },
         })
         -- then load the extension
         telescope.load_extension("fzf")

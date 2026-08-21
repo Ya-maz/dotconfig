@@ -1,0 +1,47 @@
+{
+    "providers": {
+        "ollama": {
+            "baseUrl": "http://172.22.48.1:11434/v1",
+            "api": "openai-completions",
+            "apiKey": "ollama",
+            "models": [
+                {
+                    "id": "lfm2.5:latest",
+                    "name": "lfm2.5:latest",
+                    "contextWindow": 65536
+                },
+                {
+                    "id": "gemma4:12b-it-q8_0",
+                    "name": "gemma4:12b-it-q8_0",
+                    "contextWindow": 65536
+                },
+                {
+                    "id": "minicpm-v4.6:latest",
+                    "name": "minicpm-v4.6:latest",
+                    "contextWindow": 65536
+                },
+                {
+                    "id": "kimi-k3:cloud",
+                    "name": "kimi-k3:cloud"
+                },
+                {
+                    "id": "qwen3.5:9b",
+                    "name": "qwen3.5:9b",
+                    "contextWindow": 65536
+                },
+                {
+                    "id": "qwen3.8:latest",
+                    "name": "qwen3.5:9b"
+                },
+                {
+                    "id": "kimi-k2.7-code:cloud",
+                    "name": "kimi-k2.7-code:cloud"
+                },
+                {
+                    "id": "glm-5.2:cloud",
+                    "name": "glm-5.2:cloud"
+                }
+            ]
+        }
+    }
+}
