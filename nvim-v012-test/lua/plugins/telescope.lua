@@ -1,0 +1,85 @@
+-- plugins/telescope.lua
+-- Адаптировано под vim.pack: без lazy-загрузки по event=,
+-- просто вызываем telescope.setup() вручную.
+local M = {}
+
+function M.setup()
+    local telescope = require("telescope")
+    local actions = require("telescope.actions")
+    local builtin = require("telescope.builtin")
+
+    -- Подгружаем расширения (после setup, как и раньше)
+    pcall(telescope.load_extension, "fzf")
+    pcall(telescope.load_extension, "live_grep_args")
+
+    telescope.setup({
+        defaults = {
+            layout_strategy = "flex",
+            layout_config = {
+                width = 400,
+                height = 100,
+            },
+            preview_title = "_",
+            path_display = { "truncate " },
+            file_ignore_patterns = { "node_modules", "dist" },
+            mappings = {
+                i = {
+                    ["<C-k>"] = actions.move_selection_previous,
+                    ["<C-j>"] = actions.move_selection_next,
+                    ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+                    ["<C-d>"] = actions.delete_buffer,
+                },
+            },
+        },
+        git_commits = {
+            win_config = { width = 100, height = 40 },
+            preview_config = { resolution = "very_low", timeout = 5 },
+            follow = true,
+            refspec = "HEAD",
+        },
+    })
+
+    -- LiveGrepLiteral user command
+    vim.api.nvim_create_user_command("LiveGrepLiteral", function()
+        builtin.live_grep({
+            additional_args = function()
+                return {
+                    "-F",
+                    "--hidden",
+                    "--glob", "!.git/*",
+                    "--glob", "!node_modules/*",
+                    "--glob", "!dist/*",
+                    "--glob", "!.vscode/*",
+                    "--glob", "!.editorconfig/*",
+                }
+            end,
+        })
+    end, {})
+
+    -- Keymaps
+    local edit_config_options = {
+        cwd = vim.fn.stdpath("config"),
+        results_title = "config",
+    }
+
+    local km = vim.keymap
+    km.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
+    km.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
+    km.set("n", "<leader>/", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
+    km.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
+    km.set("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "Find buffer", noremap = true })
+    km.set("n", "<leader>fs", telescope.extensions.live_grep_args.live_grep_args, { noremap = true })
+    km.set("n", "<leader>lg", ":LiveGrepLiteral<CR>", { desc = "Live Grep (Literal)" })
+
+    -- git
+    km.set("n", "<C-p>", "<cmd>Telescope git_files<cr>", { desc = "Fuzzy find git files" })
+    km.set("n", "<leader>fgs", "<cmd>Telescope git_status<cr>", { desc = "Fuzzy find git status" })
+    km.set("n", "<leader>fgc", "<cmd>Telescope git_commits<cr>", { desc = "Fuzzy find git commits" })
+    km.set("n", "<leader>fgb", "<cmd>Telescope git_branches<cr>", { desc = "Fuzzy find git branches" })
+
+    km.set("n", "<leader>en", function()
+        builtin.find_files(edit_config_options)
+    end, { desc = "Fuzzy find config files" })
+end
+
+return M

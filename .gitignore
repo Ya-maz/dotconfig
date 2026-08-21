@@ -12,6 +12,7 @@ gnome-boxes/sources/**
 !/gnome-boxes/**
 !/nvim/**
 !/nvim-v10/**
+!/nvim-v012-test/**
 !/alacritty/**
 !/tmux/**
 !/vifm/**
