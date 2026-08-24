@@ -132,21 +132,9 @@ function M.setup()
         "lua_ls",
     })
 
-    -- ВАЖНО: 0.12 включает автодополнение ОТДЕЛЬНО.
-    -- Чтобы работало со встроенным :h lsp-completion,
-    -- добавляем LspAttach handler.
-    vim.api.nvim_create_autocmd("LspAttach", {
-        group = vim.api.nvim_create_augroup("yamaz-lsp-completion", { clear = true }),
-        callback = function(ev)
-            local client = vim.lsp.get_client_by_id(ev.data.client_id)
-            if not client then return end
-            if client:supports_method("textDocument/completion") then
-                -- Включаем встроенное completion для этого клиента.
-                -- Нужно для случая, если blink.cmp не использует этот клиент.
-                vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = false })
-            end
-        end,
-    })
+    -- blink.cmp обрабатывает автодополнение самостоятельно.
+    -- Включать встроенное vim.lsp.completion.enable() не нужно,
+    -- иначе два completion engine конфликтуют.
 end
 
 return M

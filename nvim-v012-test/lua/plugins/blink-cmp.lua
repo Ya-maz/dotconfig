@@ -28,7 +28,7 @@ function M.setup()
             ["<C-Space>"] = { "show", "show_documentation" },
             ["<C-e>"] = { "hide" },
             ["<C-y>"] = { "accept" },
-            ["<CR>"] = { "select_and_accept", "fallback" },
+            ["<CR>"] = { "accept", "fallback" },
             -- Tab/Shift+Tab как дополнительная навигация
             ["Tab"] = { "select_next", "fallback" },
             ["<S-Tab>"] = { "select_prev", "fallback" },
