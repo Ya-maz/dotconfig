@@ -34,21 +34,10 @@ function M.setup()
             ["<S-Tab>"] = { "select_prev", "fallback" },
         },
 
-        -- Сниппеты: blink.cmp умеет работать с native vim.snippet (встроен в 0.12)
-        -- и с LuaSnip. Используем встроенный через friendly-snippets (есть в новой
-        -- версии, конвертированные в vscode-формат).
+        -- Сниппеты: используем встроенный vim.snippet из Neovim 0.12.
+        -- friendly-snippets подключается через источник snippets (см. providers ниже).
         snippets = {
-            expand = function(args)
-                -- 0.12 имеет встроенный vim.snippet — fallback на LuaSnip, если он есть
-                local luasnip_ok, luasnip = pcall(require, "luasnip")
-                if luasnip_ok and luasnip.lsp_expand then
-                    luasnip.lsp_expand(args.body)
-                else
-                    -- Использовать нативный vim.snippet
-                    local snip_ok, snip = pcall(require, "blink.cmp.snippets")
-                    if snip_ok then snip.expand(args.body) end
-                end
-            end,
+            preset = "default",
         },
 
         -- Источники (sources)
@@ -75,6 +64,13 @@ function M.setup()
                     name = "Snippets",
                     module = "blink.cmp.sources.snippets",
                     score_offset = -10,
+                    opts = {
+                        friendly_snippets = true,
+                        search_paths = {
+                            vim.fs.joinpath(vim.fn.stdpath("data"), "site/pack/core/opt/friendly-snippets"),
+                            vim.fn.stdpath("config") .. "/snippets",
+                        },
+                    },
                 },
             },
         },
@@ -84,20 +80,6 @@ function M.setup()
             use_nvim_cmp_as_default = true,
         },
     })
-
-    -- Загружаем friendly-snippets через встроенный loaders.
-    -- В 0.12 — vim.pack ставит плагины в
-    --   ~/.local/share/nvim-v012-test/site/pack/core/opt/friendly-snippets
-    -- (для обычного nvim — в ~/.local/share/nvim/site/pack/core/opt/...).
-    -- friendly-snippets поставляет .json файлы — blink.cmp умеет их читать.
-    pcall(function()
-        local snip = require("blink.cmp.sources.snippets")
-        local paths = {
-            vim.fs.joinpath(vim.fn.stdpath("data"), "site/pack/core/opt/friendly-snippets"),
-            vim.fn.stdpath("config") .. "/snippets", -- пользовательские
-        }
-        pcall(snip.load, { paths = paths })
-    end)
 end
 
 return M
