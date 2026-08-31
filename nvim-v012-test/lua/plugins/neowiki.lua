@@ -9,7 +9,7 @@ function M.setup()
             },
             discover_nested_roots = true,
             -- Отключаем стандартные keymaps neowiki для перехода по ссылкам,
-            -- чтобы не конфликтовать с обычным Vim <CR>.
+            -- потому что единый <CR> управляется из core.markdown-utils.
             keymaps = {
                 action_link = "",
                 action_link_vsplit = "",

@@ -59,6 +59,7 @@ nvim-v012-test/
 ├── nvim-pack-lock.json       # Lockfile (создаётся автоматически)
 └── lua/
     ├── core/                 # Утилиты
+    │   ├── markdown-utils.lua
     │   ├── init.lua
     │   └── set.lua
     └── plugins/              # Конфигурация плагинов

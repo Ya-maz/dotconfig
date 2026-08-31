@@ -1,5 +1,10 @@
 local keymap = vim.keymap
 
+local markdown_utils_ok, markdown_utils = pcall(require, "core.markdown-utils")
+if markdown_utils_ok then
+    keymap.set("n", "<leader><CR>", markdown_utils.link, { desc = "Follow Markdown link under cursor" })
+end
+
 keymap.set("v", "J", ":m '>+2<CR>gv=gv")
 keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
