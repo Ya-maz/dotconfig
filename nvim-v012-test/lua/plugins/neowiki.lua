@@ -8,13 +8,7 @@ function M.setup()
                 { name = "Notes", path = "~/notes" },
             },
             discover_nested_roots = true,
-            -- Отключаем стандартные keymaps neowiki для перехода по ссылкам,
-            -- потому что единый <CR> управляется из core.markdown-utils.
-            keymaps = {
-                action_link = "",
-                action_link_vsplit = "",
-                action_link_split = "",
-            },
+            -- Используем стандартные keymaps плагина (например, <CR> для перехода по ссылкам).
         })
     end)
 
