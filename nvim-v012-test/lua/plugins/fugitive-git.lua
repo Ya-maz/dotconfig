@@ -48,6 +48,9 @@ end
 
 function M.setup()
     vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
+    vim.keymap.set("n", "<leader>gd", function()
+        vim.cmd("Gvdiffsplit!")
+    end, { desc = "Git diff current file (3-way if merge conflict)" })
 
     -- В diff-режиме для fugitive-буферов //2 и //3 вешаем свой dp,
     -- который гарантированно кладёт изменение в рабочий файл.
