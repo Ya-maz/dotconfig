@@ -1,10 +1,5 @@
 local keymap = vim.keymap
 
-local markdown_utils_ok, markdown_utils = pcall(require, "core.markdown-utils")
-if markdown_utils_ok then
-    keymap.set("n", "<leader><CR>", markdown_utils.link, { desc = "Follow Markdown link under cursor" })
-end
-
 keymap.set("v", "J", ":m '>+2<CR>gv=gv")
 keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
@@ -70,8 +65,25 @@ keymap.set("v", ">", ">gv", { silent = true, noremap = true })
 keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" })
 keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" })
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" })
-keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" })
+keymap.set("n", "<leader>tt", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" })
 keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" })
+
+-- Удобное переключение табов по кругу одной клавишей
+keymap.set("n", "<Tab>", function()
+    local tabcount = vim.fn.tabpagenr("$")
+    if tabcount == 1 then
+        return
+    end
+    vim.cmd("tabnext")
+end, { desc = "Next tab (cycles forward)" })
+
+keymap.set("n", "<S-Tab>", function()
+    local tabcount = vim.fn.tabpagenr("$")
+    if tabcount == 1 then
+        return
+    end
+    vim.cmd("tabprevious")
+end, { desc = "Previous tab (cycles backward)" })
 
 local job_id = 0
 keymap.set("t", "<leader>q", "<C-\\><C-n>", { silent = true })
