@@ -68,22 +68,25 @@ keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" })
 keymap.set("n", "<leader>tt", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" })
 keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" })
 
--- Удобное переключение табов по кругу одной клавишей
-keymap.set("n", "<Tab>", function()
-    local tabcount = vim.fn.tabpagenr("$")
-    if tabcount == 1 then
+-- Удобное переключение табов по кругу
+local function next_tab()
+    if vim.fn.tabpagenr("$") == 1 then
         return
     end
     vim.cmd("tabnext")
-end, { desc = "Next tab (cycles forward)" })
+end
 
-keymap.set("n", "<S-Tab>", function()
-    local tabcount = vim.fn.tabpagenr("$")
-    if tabcount == 1 then
+local function prev_tab()
+    if vim.fn.tabpagenr("$") == 1 then
         return
     end
     vim.cmd("tabprevious")
-end, { desc = "Previous tab (cycles backward)" })
+end
+
+keymap.set("n", "<Tab>", next_tab, { desc = "Next tab (cycles forward)" })
+keymap.set("n", "<S-Tab>", prev_tab, { desc = "Previous tab (cycles backward)" })
+keymap.set("n", "]", next_tab, { desc = "Next tab (cycles forward)" })
+keymap.set("n", "[", prev_tab, { desc = "Previous tab (cycles backward)" })
 
 local job_id = 0
 keymap.set("t", "<leader>q", "<C-\\><C-n>", { silent = true })
