@@ -7,22 +7,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     end,
 })
 
--- Кастомные сниппеты для JS/TS
-vim.api.nvim_create_autocmd("FileType", {
-    desc = "Apply custom JS/TS keymaps (snippets)",
-    group = vim.api.nvim_create_augroup("yamaz-js-ts-snippets", { clear = true }),
-    pattern = { "javascript", "typescript", "javascriptreact", "typescriptreact" },
-    callback = function()
-        local map_opts = { noremap = true, silent = true, buffer = true }
-        vim.keymap.set("n", "<leader>log",
-            [[i// eslint-disable-next-line no-console<CR>console.log('%chint', 'background-color: green', params);<CR><Esc>O]],
-            vim.tbl_extend("force", map_opts, { desc = "Insert debug console.log" }))
-        vim.keymap.set("n", "<leader>arr",
-            [[iconst fn = (arguments) => {<CR>return <CR>}<Esc>]],
-            vim.tbl_extend("force", map_opts, { desc = "Insert arrow function" }))
-    end,
-})
-
 -- npm test интеграция (quickfix)
 vim.api.nvim_create_autocmd("FileType", {
     group = vim.api.nvim_create_augroup("yamaz-js-ts-makeprg", { clear = true }),

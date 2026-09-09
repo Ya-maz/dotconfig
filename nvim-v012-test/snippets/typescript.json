@@ -1,0 +1,19 @@
+{
+    "debug console.log with eslint disable": {
+        "prefix": "log",
+        "body": [
+            "// eslint-disable-next-line no-console",
+            "console.log('%chint', 'background-color: green', ${1:params});"
+        ],
+        "description": "Insert debug console.log with eslint disable"
+    },
+    "arrow function": {
+        "prefix": "arr",
+        "body": [
+            "const ${1:fn} = (${2:arguments}) => {",
+            "\t${3:return null;}",
+            "};"
+        ],
+        "description": "Insert arrow function"
+    }
+}
