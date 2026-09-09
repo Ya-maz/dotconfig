@@ -63,7 +63,7 @@ function M.setup()
                 snippets = {
                     name = "Snippets",
                     module = "blink.cmp.sources.snippets",
-                    score_offset = -10,
+                    score_offset = 10,
                     opts = {
                         friendly_snippets = true,
                         search_paths = {
