@@ -7,8 +7,8 @@ function M.setup()
     harpoon:setup()
 
     local keymap = vim.keymap
-    keymap.set("n", "<leader>a", function() harpoon:list():append() end)
-    keymap.set("n", "<C-u>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+    keymap.set("n", "<leader>a", function() harpoon:list():add() end)
+    keymap.set("n", "<leader>hl", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
 
     -- <C-F1>...<C-F5> для выбора файлов harpoon.
     -- Ctrl+F, чтобы избежать перехвата Alt+F4 (закрывает терминал в Windows).
