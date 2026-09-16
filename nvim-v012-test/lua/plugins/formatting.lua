@@ -24,13 +24,12 @@ function M.setup()
         formatters = {
             eslint_d = {
                 command = vim.fn.stdpath("data") .. "/mason/bin/eslint_d",
-                require_cwd = true,
             },
         },
         format_on_save = function(bufnr)
             local ft = vim.bo[bufnr].filetype
             if vim.tbl_contains({ "javascript", "typescript", "javascriptreact", "typescriptreact" }, ft) then
-                return { formatters = { "eslint_d" }, timeout_ms = 1000, lsp_fallback = false }
+                return { formatters = { "eslint_d" }, timeout_ms = 5000, lsp_fallback = false }
             end
             return nil
         end,
@@ -42,7 +41,7 @@ function M.setup()
     km.set("n", "<leader>fl", vim.lsp.buf.format)
 
     km.set({ "n", "v" }, "<leader>fe", function()
-        conform.format({ formatters = { "eslint_d" }, lsp_fallback = false, timeout_ms = 1000 })
+        conform.format({ formatters = { "eslint_d" }, lsp_fallback = false, timeout_ms = 5000 })
     end, { desc = "Format file with eslint_d" })
 
     km.set({ "n", "v" }, "<leader>fp", function()
