@@ -15,7 +15,7 @@
   "subagents": {
     "agentOverrides": {
       "scout": {
-        "model": "lfm2.5:latest",
+        "model": "ornith-1.5:9b",
         "defaultContext": "fresh"
       },
       "worker": {
