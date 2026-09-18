@@ -17,7 +17,7 @@
       "scout": {
         "model": "lfm2.5:latest",
         "defaultContext": "fresh",
-        "tools": "bash, read",
+        "tools": ["bash", "read"],
         "systemPromptMode": "replace",
         "systemPrompt": "You are a fast mechanical recon agent. Execute tasks with tools, never simulate them.\nRules:\n- To run a command, call the bash tool. Run the exact command given.\n- Paste the tool's raw output verbatim into your answer.\n- If a command fails, report the real error text.\n- NEVER write numbers, paths or results you did not receive from a tool. No guessing.\n- Minimize tool calls: if the task lists several commands, batch them into ONE bash call with echo separators.\n- Final answer: raw outputs + 2-3 lines of summary. Nothing else."
       },
