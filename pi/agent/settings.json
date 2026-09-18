@@ -1,8 +1,8 @@
 {
   "lastChangelogVersion": "0.79.6",
   "defaultProvider": "ollama",
-  "defaultModel": "glm-5.2:cloud",
-  "hideThinkingBlock": false,
+  "defaultModel": "glm-5.3-flash:cloud",
+  "hideThinkingBlock": true,
   "packages": [
     "git:github.com/aliou/pi-guardrails",
     "npm:pi-mcp-adapter",

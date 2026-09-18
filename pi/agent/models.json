@@ -1,47 +1,57 @@
 {
-    "providers": {
-        "ollama": {
-            "baseUrl": "http://172.22.48.1:11434/v1",
-            "api": "openai-completions",
-            "apiKey": "ollama",
-            "models": [
-                {
-                    "id": "lfm2.5:latest",
-                    "name": "lfm2.5:latest",
-                    "contextWindow": 65536
-                },
-                {
-                    "id": "gemma4:12b-it-q8_0",
-                    "name": "gemma4:12b-it-q8_0",
-                    "contextWindow": 65536
-                },
-                {
-                    "id": "minicpm-v4.6:latest",
-                    "name": "minicpm-v4.6:latest",
-                    "contextWindow": 65536
-                },
-                {
-                    "id": "kimi-k3:cloud",
-                    "name": "kimi-k3:cloud"
-                },
-                {
-                    "id": "qwen3.5:9b",
-                    "name": "qwen3.5:9b",
-                    "contextWindow": 65536
-                },
-                {
-                    "id": "qwen3.8:latest",
-                    "name": "qwen3.5:9b"
-                },
-                {
-                    "id": "kimi-k2.7-code:cloud",
-                    "name": "kimi-k2.7-code:cloud"
-                },
-                {
-                    "id": "glm-5.2:cloud",
-                    "name": "glm-5.2:cloud"
-                }
-            ]
+  "providers": {
+    "ollama": {
+      "baseUrl": "http://172.22.48.1:11434/v1",
+      "api": "openai-completions",
+      "apiKey": "ollama",
+      "models": [
+        {
+          "id": "ornith-1.5:9b",
+          "name": "Ornith-1.5 9B (agentic, 256K ctx, vision)",
+          "reasoning": true,
+          "input": ["text", "image"],
+          "contextWindow": 262144
+        },
+        {
+          "id": "lfm2.5:latest",
+          "name": "LFM2.5 8B-A1B (fast edge, tool-calling)",
+          "reasoning": true,
+          "contextWindow": 128000
+        },
+        {
+          "id": "gemma4:12b-it-q8_0",
+          "name": "Gemma 4 12B (Q8, vision+audio)",
+          "reasoning": true,
+          "input": ["text", "image"],
+          "contextWindow": 262144
+        },
+        {
+          "id": "minicpm-v4.6:latest",
+          "name": "MiniCPM-V 4.6 (light vision)",
+          "reasoning": true,
+          "input": ["text", "image"],
+          "contextWindow": 262144
+        },
+        {
+          "id": "qwen3.5:9b",
+          "name": "Qwen3.5 9B (vision)",
+          "reasoning": true,
+          "input": ["text", "image"],
+          "contextWindow": 262144
+        },
+        {
+          "id": "glm-5.3-flash:cloud",
+          "name": "GLM 5.3 Flash (cloud, 1M ctx)",
+          "reasoning": true,
+          "input": ["text", "image"],
+          "contextWindow": 1048576
+        },
+        {
+          "id": "minimax-m2.1:cloud",
+          "name": "MiniMax M2.1 (cloud)",
+          "contextWindow": 204800
         }
+      ]
     }
+  }
 }
