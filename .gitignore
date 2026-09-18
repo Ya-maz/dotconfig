@@ -38,6 +38,7 @@ pi/agent/skills/**
 pi/agent/mcp-oauth/**
 pi/agent/mcp-cache.json
 pi/agent/mcp-onboarding.json
+pi/agent/models-store.json
 pi/agent/run-history.jsonl
 # автосгенерированные списки моделей с локальных серверов
 pi/agent/models-llama.json
