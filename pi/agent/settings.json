@@ -8,36 +8,7 @@
     "npm:pi-mcp-adapter",
     "npm:pi-vision-tool",
     "npm:pi-tps-was-taken",
-    "npm:pi-web-access",
-    "npm:pi-subagents@0.30.0"
+    "npm:pi-web-access"
   ],
-  "theme": "dark",
-  "subagents": {
-    "agentOverrides": {
-      "scout": {
-        "model": "ornith-1.5:9b",
-        "defaultContext": "fresh"
-      },
-      "worker": {
-        "model": "ornith-1.5:9b",
-        "thinking": "high"
-      },
-      "planner": {
-        "disabled": true
-      },
-      "reviewer": {
-        "disabled": true
-      },
-      "oracle": {
-        "disabled": true
-      },
-      "researcher": {
-        "disabled": true
-      },
-      "delegate": {
-        "disabled": true
-      }
-    }
-  },
-  "defaultThinkingLevel": "medium"
+  "theme": "dark"
 }
