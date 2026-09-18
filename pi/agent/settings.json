@@ -38,5 +38,6 @@
         "disabled": true
       }
     }
-  }
+  },
+  "defaultThinkingLevel": "medium"
 }
