@@ -8,10 +8,10 @@ function M.setup()
 
     conform.setup({
         formatters_by_ft = {
-            javascript = { "prettier", "eslint_d", stop_after_first = true },
-            typescript = { "prettier", "eslint_d", stop_after_first = true },
-            javascriptreact = { "prettier", "eslint_d", stop_after_first = true },
-            typescriptreact = { "prettier", "eslint_d", stop_after_first = true },
+            javascript = { "eslint_d" },
+            typescript = { "eslint_d" },
+            javascriptreact = { "eslint_d" },
+            typescriptreact = { "eslint_d" },
             css = { "prettier" },
             html = { "prettier" },
             json = { "prettier" },
@@ -24,15 +24,17 @@ function M.setup()
         formatters = {
             eslint_d = {
                 command = vim.fn.stdpath("data") .. "/mason/bin/eslint_d",
-            },
-            prettier = {
-                command = vim.fn.stdpath("data") .. "/mason/bin/prettier",
+                -- Тяжёлый flat-config загружается при первом старте демона.
+                -- Увеличиваем idle, чтобы прогретый daemon не умирал между сессиями.
+                env = {
+                    ESLINT_D_IDLE = "120",
+                },
             },
         },
         format_on_save = function(bufnr)
             local ft = vim.bo[bufnr].filetype
             if vim.tbl_contains({ "javascript", "typescript", "javascriptreact", "typescriptreact" }, ft) then
-                return { formatters = { "prettier", "eslint_d" }, stop_after_first = true, timeout_ms = 5000, lsp_fallback = false }
+                return { formatters = { "eslint_d" }, timeout_ms = 20000, lsp_fallback = false }
             end
             return nil
         end,
@@ -44,7 +46,7 @@ function M.setup()
     km.set("n", "<leader>fl", vim.lsp.buf.format)
 
     km.set({ "n", "v" }, "<leader>fe", function()
-        conform.format({ formatters = { "eslint_d" }, lsp_fallback = false, timeout_ms = 5000 })
+        conform.format({ formatters = { "eslint_d" }, lsp_fallback = false, timeout_ms = 20000 })
     end, { desc = "Format file with eslint_d" })
 
     km.set({ "n", "v" }, "<leader>fp", function()
@@ -60,28 +62,31 @@ function M.setup()
             if not root then
                 return
             end
-            -- Запускаем холостой lint асинхронно; stderr нас не интересует.
-            -- Используем callback, чтобы не блокировать event loop.
-            local function warm_daemon()
-                vim.system(
-                    { vim.fn.stdpath("data") .. "/mason/bin/eslint_d", "--stdin", "--stdin-filename", vim.api.nvim_buf_get_name(args.buf) },
-                    { cwd = root, stdin = "" },
-                    function() end
-                )
-            end
-
-            -- Если daemon уже есть, ничего не делаем. Иначе запускаем
-            -- синхронный короткий статус и затем асинхронный warm.
+            -- Если daemon уже есть — ничего не делаем.
             local status_ok, status_result = pcall(function()
                 return vim.system(
                     { vim.fn.stdpath("data") .. "/mason/bin/eslint_d", "status" },
-                    { cwd = root }
+                    { cwd = root, env = { ESLINT_D_IDLE = "120" } }
                 ):wait(3000)
             end)
             if status_ok and status_result and (status_result.stdout or ""):match("Running") then
                 return
             end
-            warm_daemon()
+
+            -- Холодный старт eslint_d на тяжёлом flat-config занимает ~10-12с.
+            -- Прогреваем daemon асинхронно сразу при открытии первого JS/TS файла,
+            -- чтобы последующие conform-форматирования были быстрыми (~0.3с).
+            -- В интерактивном Neovim event loop продолжает крутиться, поэтому warm
+            -- выполняется в фоне и не блокирует открытие файла.
+            local function warm()
+                vim.system(
+                    { vim.fn.stdpath("data") .. "/mason/bin/eslint_d", "--stdin", "--stdin-filename", vim.api.nvim_buf_get_name(args.buf) },
+                    { cwd = root, stdin = "", env = { ESLINT_D_IDLE = "120" } },
+                    function() end
+                )
+            end
+            -- Небольшая задержка, чтобы filetype-обработчики и LSP не мешали.
+            vim.defer_fn(warm, 100)
         end,
         once = true,
     })

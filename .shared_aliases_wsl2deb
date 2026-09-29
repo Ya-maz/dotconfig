@@ -31,6 +31,9 @@ alias szc='npm run cli'
 alias szwu='npm run watch update'
 alias szwc='npm run watch configured'
 alias szcl='cat local.config.json'
+# current mc project
+alias szre='nohup bash /mnt/c/Users/ThinkPad/android-e2e/run-emulator-wsl.sh >/tmp/emulator-hosts.log 2>&1 & echo "Started in background; watch: tail -f /tmp/emulator-hosts.log"'
+
 
 # Ollama
 alias checkOllama='curl http://$(ip route | awk "/default/ {print \$3}"):11434'

@@ -1,7 +1,7 @@
 local keymap = vim.keymap
 
-keymap.set("v", "J", ":m '>+2<CR>gv=gv")
 keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+keymap.set("v", "J", ":m '>+2<CR>gv=gv")
 
 keymap.set("n", "<leader>sa", "gg<S-v>G")
 
@@ -21,7 +21,7 @@ keymap.set("n", "<M-m>", "<C-w>-")
 keymap.set("n", "J", "mzJ`z")
 
 keymap.set("n", "<C-d>", "<C-d>zz")
-keymap.set("n", "<C-e>", "<C-u>zz")
+keymap.set("n", "<C-u>", "<C-u>zz")
 keymap.set("n", "n", "nzzzv")
 keymap.set("n", "N", "Nzzzv")
 
@@ -69,24 +69,24 @@ keymap.set("n", "<leader>tt", "<cmd>tabnew %<CR>", { desc = "Open current buffer
 keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" })
 
 -- Удобное переключение табов по кругу
-local function next_tab()
-    if vim.fn.tabpagenr("$") == 1 then
-        return
-    end
-    vim.cmd("tabnext")
-end
-
-local function prev_tab()
-    if vim.fn.tabpagenr("$") == 1 then
-        return
-    end
-    vim.cmd("tabprevious")
-end
-
-keymap.set("n", "<Tab>", next_tab, { desc = "Next tab (cycles forward)" })
-keymap.set("n", "<S-Tab>", prev_tab, { desc = "Previous tab (cycles backward)" })
-keymap.set("n", "]", next_tab, { desc = "Next tab (cycles forward)" })
-keymap.set("n", "[", prev_tab, { desc = "Previous tab (cycles backward)" })
+-- local function next_tab()
+--     if vim.fn.tabpagenr("$") == 1 then
+--         return
+--     end
+--     vim.cmd("tabnext")
+-- end
+--
+-- local function prev_tab()
+--     if vim.fn.tabpagenr("$") == 1 then
+--         return
+--     end
+--     vim.cmd("tabprevious")
+-- end
+--
+-- keymap.set("n", "<Tab>", next_tab, { desc = "Next tab (cycles forward)" })
+-- keymap.set("n", "<S-Tab>", prev_tab, { desc = "Previous tab (cycles backward)" })
+-- keymap.set("n", "]", next_tab, { desc = "Next tab (cycles forward)" })
+-- keymap.set("n", "[", prev_tab, { desc = "Previous tab (cycles backward)" })
 
 local job_id = 0
 keymap.set("t", "<leader>q", "<C-\\><C-n>", { silent = true })
